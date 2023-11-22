@@ -11,9 +11,19 @@ const connect = function() {
   conn.setEncoding("utf8");
 
   conn.on('connect', () => {
-    console.log('Successfully connected to game server')
-    conn.write('Name: VIC')
+    console.log('Successfully connected to game server');
+    conn.write('Name: VIC');
 
+    // const directions = ['Move: up', 'Move: up', 'Move: left', 'Move: left', 'Move: down', 'Move: down', 'Move: down', 'Move: up', 'Move: up', 'Move: left', 'Move: left', 'Move: left', 'Move: up', 'Move: up',];
+
+    // let delay = 500;
+
+    // for (const moves of directions) {
+    //   setTimeout(() => {
+    //     conn.write(moves);
+    //   }, delay);
+    //   delay += 500;
+    // }
   })
 
   conn.on('data', (data) => {
@@ -23,4 +33,4 @@ const connect = function() {
   return conn;
 };
 
-module.exports = { connect };
+module.exports = {connect};
