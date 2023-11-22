@@ -3,64 +3,6 @@ const { MoveUpKey, MoveLeftKey, MoveDownKey, MoveRightKey, msg1, msg2, msg3, msg
 
 let connection;
 
-// const setupInput = function(conn) {
-//   connection = conn;
-//   const stdin = process.stdin;
-//   stdin.setRawMode(true);
-//   stdin.setEncoding("utf8");
-//   stdin.on("data", handleUserInput);
-//   stdin.resume();
-//   return stdin;
-// };
-
-// const handleUserInput = function(key) {
-//   // your code here
-//   const stdout = process.stdout;
-
-//   const interval = function(key) {
-//     func = setInterval(() => {
-//       connection.write(key)
-//     }, 50)
-//   }
-//   if (key === '\u0003') {
-//     stdout.write('Sucessfully exited the game!');
-//     process.exit();
-//   }
-
-//   if (key === MoveUpKey) {
-//     connection.write('Move: up');
-//   }
-
-//   if (key === MoveLeftKey) {
-//     connection.write('Move: left');
-//   }
-
-//   if (key === MoveDownKey) {
-//     connection.write('Move: down');
-//   }
-
-//   if (key === MoveRightKey) {
-//     connection.write('Move: right');
-//   }
-
-//   if (key === '1') {
-//     connection.write('Say: Hello!');
-//   }
-
-//   if (key === '2') {
-//     connection.write('Say: 😄😄😄');
-//   }
-
-//   if (key === '3') {
-//     connection.write('Say: Have fun!');
-//   }
-
-//   if (key === '4') {
-//     connection.write('Say: 🤪🤪🤪');
-//   }
-
-// };
-
 const setupInput = function(conn) {
   connection = conn;
   const stdin = process.stdin;
@@ -71,58 +13,58 @@ const setupInput = function(conn) {
   return stdin;
 };
 
-let func;
+let intervalKey;
 
 const handleUserInput = (key) => {
   const stdout = process.stdout;
   const interval = function(key) {
-  func = setInterval(() => {
+  intervalKey = setInterval(() => {
       connection.write(key);
     }, 40);
   };
   if (key === '\u0003') {
-    stdout.write("Exited snek game. Bye bye.\n");
+    stdout.write("Sucessfully exited the game!");
     process.exit();
   }
   if (key === 'w') {
-    clearInterval(func);
+    clearInterval(intervalKey);
     interval(MoveUpKey);
   }
   if (key === 'a') {
-    clearInterval(func);
+    clearInterval(intervalKey);
     interval(MoveLeftKey);
   }
   if (key === 's') {
-    clearInterval(func);
+    clearInterval(intervalKey);
     interval(MoveDownKey);
   }
   if (key === 'd') {
-    clearInterval(func);
+    clearInterval(intervalKey);
     interval(MoveRightKey);
   }
   
   if (key === '1') {
-    clearInterval(func);
+    clearInterval(intervalKey);
     interval(msg1);
   }
 
   if (key === '2') {
-    clearInterval(func);
+    clearInterval(intervalKey);
     interval(msg2);
   }
 
   if (key === '3') {
-    clearInterval(func);
+    clearInterval(intervalKey);
     interval(msg3);
   }
 
   if (key === '4') {
-    clearInterval(func);
+    clearInterval(intervalKey);
     interval(msg4);
   }
 
   if (key === '5') {
-    clearInterval(func);
+    clearInterval(intervalKey);
     interval(msg5);
   }
 
